@@ -20,8 +20,8 @@ public:
 	VertexBuffer(const void* data, unsigned int size, const BufferLayout& layout, VertexBufferUsage bufferUsage);
 	~VertexBuffer();
 
-	void SetData(const void* data, unsigned int size, const BufferLayout& layout, VertexBufferUsage bufferUsage);
+	void setData(const void* data, unsigned int size, const BufferLayout& layout, VertexBufferUsage bufferUsage, bool alloc);
 
-	void Bind();
-	void Unbind();
+	void bind();
+	void unbind();
 };

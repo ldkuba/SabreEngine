@@ -1,10 +1,11 @@
 #pragma once
 #include <vector>
+#include <GL/glew.h>
 
 class BufferLayoutElement {
 private:
 	enum BufferLayoutElementType {
-		Int, Float, Vec3, Vec4, Mat4
+		Int = GL_INT, Float = GL_FLOAT
 	};
 
 	BufferLayoutElementType m_Type;
@@ -15,23 +16,7 @@ public:
 
 	unsigned int getTotalSize() 
 	{
-		unsigned int result = 0;
-		switch (m_Type) {
-		case Int:
-			result = 4; break;
-		case Float:
-			result = 4; break;
-		case Vec3:
-			result = 3 * 4; break;
-		case Vec4:
-			result = 4 * 4; break;
-		case Mat4:
-			result = 4 * 4 * 4; break;
-		default:
-			result = -1;
-		}
-
-		return result * m_Count;
+		return 4 * m_Count;
 	}
 
 	int getCount()
@@ -56,4 +41,5 @@ public:
 	inline void addElement(BufferLayoutElement el) { m_BufferLayout.push_back(el); };
 	inline BufferLayoutElement getElement(int index) const { return m_BufferLayout[index]; };
 	unsigned int getLayoutSize() const;
+	inline unsigned int getLayoutCount() const { return m_BufferLayout.size(); };
 };
