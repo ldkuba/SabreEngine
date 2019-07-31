@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\engine">
+      <UniqueIdentifier>{acbc3349-787a-499b-ad60-77769ed19e96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\application">
+      <UniqueIdentifier>{a1e57f0d-84aa-42b4-b7c1-a190a0bad50d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\assets">
+      <UniqueIdentifier>{f370fa55-7326-41c6-8300-4cbc85527f70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\font">
+      <UniqueIdentifier>{8a1c43f7-2223-4ea9-8dbb-33f9b65a2b73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\graphics">
+      <UniqueIdentifier>{20691f97-92c7-4832-8be5-3912bdb8a65a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\gui">
+      <UniqueIdentifier>{6e1f76c6-ec20-474d-afb1-86d260e6778e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\input">
+      <UniqueIdentifier>{f0d96c89-3315-44b3-8cac-f1bbe5b74731}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\net">
+      <UniqueIdentifier>{b8b9d85c-f63a-42d7-b706-4abe57a16d2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\scene">
+      <UniqueIdentifier>{c30c4de0-df3f-4f94-811e-df87099cf1ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\sound">
+      <UniqueIdentifier>{d75b7b70-f8f7-40c8-a0eb-794e25a3d59f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\state">
+      <UniqueIdentifier>{95c90e8d-5cae-49c8-9302-8df59f99e759}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\GameObject">
+      <UniqueIdentifier>{0af6ef88-d6ba-40a0-bbc1-078d5011cc1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\timer">
+      <UniqueIdentifier>{61098586-8ae4-4d7e-9075-2eb00a821d7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\graphics\renderer">
+      <UniqueIdentifier>{708941f7-20c7-4419-8c7c-72012b99b8a9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h">
+      <Filter>Source Files\engine\application</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Source Files\engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardListener.h">
+      <Filter>Source Files\engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseListener.h">
+      <Filter>Source Files\engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardHandler.h">
+      <Filter>Source Files\engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseButtonHandler.h">
+      <Filter>Source Files\engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Source Files\engine\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGraphNode.h">
+      <Filter>Source Files\engine\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Source Files\engine\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>Source Files\engine\state</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractState.h">
+      <Filter>Source Files\engine\state</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Source Files\engine\graphics\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer2D.h">
+      <Filter>Source Files\engine\graphics\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Source Files\engine\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="BufferLayout.h">
+      <Filter>Source Files\engine\graphics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Application.cpp">
+      <Filter>Source Files\engine\application</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\engine\input</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardHandler.cpp">
+      <Filter>Source Files\engine\input</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseButtonHandler.cpp">
+      <Filter>Source Files\engine\input</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGraphNode.cpp">
+      <Filter>Source Files\engine\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\engine\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="StateManager.cpp">
+      <Filter>Source Files\engine\state</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractState.cpp">
+      <Filter>Source Files\engine\state</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\engine\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer2D.cpp">
+      <Filter>Source Files\engine\graphics\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Source Files\engine\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="BufferLayout.cpp">
+      <Filter>Source Files\engine\graphics</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
