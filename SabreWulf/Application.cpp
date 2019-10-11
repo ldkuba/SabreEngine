@@ -1,152 +1,94 @@
 #include "Application.h"
-#include <iostream>
 
-Application::Application(ApplicationSettings settings)
+Application::Application(AppSettings settings)
 {
-	this->headless = settings.headless;
-	if (!settings.headless) {
+	m_Settings = settings;
 
-		initialise(settings.width, settings.height, settings.vsyncInterval, settings.name, settings.fullscreen);
-		inputManager = new InputManager(this);
-		assetManager = new AssetManager();
-		soundManager = new SoundManager();
-		setViewport(10.0f * (s_WindowSize.getX() / s_WindowSize.getY()), 10.0f);
-		netManager = new NetworkManager(this, settings.networkType);
-
-	}
-	else {
-		netManager = new NetworkManager(this, settings.networkType);
-	}
-
-	timer = new Timer(60.0f);
-	stateManager = new StateManager(this);
+	initialize();
 }
 
-Application::~Application() {}
-
-void Application::initialise(unsigned int width, unsigned int height, unsigned int vsyncInterval, const char* name, bool fullscreen)
+Application::~Application()
 {
-	// Initialise GLFW
-	if (!glfwInit()) {
-		std::cerr << "Failed to initialie GLFW" << std::endl;
+	cleanup();
+}
+
+void Application::initialize()
+{
+	// glfw: initialize and configure
+	// ------------------------------
+	glfwInit();
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+	// glfw window creation
+	// --------------------
+	m_Window = glfwCreateWindow(m_Settings.width, m_Settings.height, m_Settings.name.c_str(), NULL, NULL);
+	if (m_Window == NULL)
+	{
+		std::cout << "Failed to create GLFW window" << std::endl;
+		glfwTerminate();
+		return;
 	}
 
-	isFullscreen = fullscreen;
+	glfwSetWindowUserPointer(m_Window, this);
+	glfwMakeContextCurrent(m_Window);
+	
+	glfwSetFramebufferSizeCallback(m_Window, Application::s_resizeCallback);
+	glfwSetErrorCallback(Application::s_errorCallback);
 
-	const GLFWvidmode* vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-
-	if (!isFullscreen) {
-
-		glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-		// Create the window
-		window = glfwCreateWindow(width, height, name, NULL, NULL);
-		setResolution(width, height);
+	// glew: load all OpenGL function pointers
+	// ---------------------------------------
+	if (glewInit() != GLEW_OK)
+	{
+		std::cout << "Failed to initialize GLEW" << std::endl;
+		return;
 	}
-	else {
-
-		glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-		window = glfwCreateWindow(vidmode->width, vidmode->height, name, glfwGetPrimaryMonitor(), NULL);
-		setResolution(vidmode->width, vidmode->height);
-	}
-
-	// before context creation
-	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
-
-	if (!window) {
-		std::cerr << "Failed to create window" << std::endl;
-	}
-
-	// Centre the window
-	int pWidth, pHeight;
-	glfwGetWindowSize(window, &pWidth, &pHeight);
-	glfwSetWindowPos(window, (vidmode->width - pWidth) / 2, (vidmode->height - pHeight) / 2);
-
-	glfwMakeContextCurrent(window);
-
-	// set errorCallback
-	glfwSetErrorCallback(this->error_callback);
-	// set resizeCallback
-	glfwSetWindowSizeCallback(window, this->resize);
-	// Enable v-sync
-	glfwSwapInterval(vsyncInterval);
-	// Enable Antialiasing
-	glfwWindowHint(GLFW_SAMPLES, 2);
-	// Make the window visible
-	glfwShowWindow(window);
 }
 
 void Application::run()
 {
-	if (!headless) {
-		// Run the rendering loop until the user presses esc or quits
-		while (!glfwWindowShouldClose(window)) {
+	// render loop
+	// -----------
+	while (!glfwWindowShouldClose(m_Window))
+	{
+		// update
+		stateManager.updateState();
 
-			netManager.handleMessagesAndConnections();
-			stateManager.updateState();
-			gui.update();
+		// render
+		// ------
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
 
-			stateManager.renderState();
+		stateManager.renderState();
 
-			glfwSwapBuffers(window); // swap the colour buffers
-			glfwPollEvents(); // Poll for window events. The key callback
-							  // above
-							  // will only be invoked during this call.
-
-			timer.waitForTick();
-		}
-	}
-	else {
-		// Run the rendering loop until the user presses esc or quits
-		while (running) {
-			netManager.handleMessagesAndConnections();
-			stateManager.updateState();
-
-			timer.waitForTick();
-		}
+		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
+		// -------------------------------------------------------------------------------
+		glfwSwapBuffers(m_Window);
+		glfwPollEvents();
 	}
 
 	cleanup();
 }
 
-void Application::setResolution(int width, int height)
+void Application::s_resizeCallback(GLFWwindow* window, int width, int height)
 {
-	s_WindowSize = glm::vec2(width, height);
+	Application* app = static_cast<Application*>(glfwGetWindowUserPointer(window));
+	app->resizeCallback(window, width, height);
 }
 
-void Application::setViewport(float right, float top)
+void Application::resizeCallback(GLFWwindow* window, int width, int height)
 {
-	s_Viewport = glm::vec2(right, top);
+	glViewport(0, 0, width, height);
 }
 
-void Application::resize(GLFWwindow* window, int width, int height)
+void Application::s_errorCallback(int error, const char* description)
 {
-	if (!isFullscreen) {
-		setResolution(width, height);
-	}
-}
-
-void Application::exit()
-{
-	if (!headless)
-	{
-		glfwSetWindowShouldClose(window, true);
-	}
-	else {
-		running = false;
-	}
+	std::cout << "Error " << error << ": " << description << std::endl;
 }
 
 void Application::cleanup()
 {
-	if (!headless)
-	{
-		glfwDestroyWindow(window);
-		// Terminate GLFW
-		glfwTerminate();
-		soundManager.clean();
-		
-		delete this->inputManager;
-	}
-
-	netManager.stopConnection();
+	glfwDestroyWindow(m_Window);
+	glfwTerminate();
 }

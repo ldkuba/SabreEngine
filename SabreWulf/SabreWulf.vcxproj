@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AbstractState.cpp" />
+    <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="StateManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AbstractState.h" />
+    <ClInclude Include="Application.h" />
+    <ClInclude Include="StateManager.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{1B5CFD6F-2182-4A2D-A92F-B347EADA4202}</ProjectGuid>
@@ -88,10 +99,14 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>C:\Libs\asio-1.12.2\include;C:\Libs\glm-0.9.9.5\glm;C:\Libs\glew-2.1.0\include;C:\VulkanSDK\1.1.114.0\Include;C:\Libs\glfw-3.3.bin.WIN64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\VulkanSDK\1.1.114.0\Lib;C:\Libs\glew-2.1.0\lib\Release\Win32;C:\Libs\glfw-3.3.bin.WIN64\lib-vc2017;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>vulkan-1.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\VulkanSDK\1.1.114.0\Lib;C:\Libs\glew-2.1.0\lib\Release\x64;C:\Libs\glfw-3.3.bin.WIN64\lib-vc2017;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>vulkan-1.lib;opengl32.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <AdditionalOptions>/verbose %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -118,6 +133,8 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>C:\Libs\asio-1.12.2\include;C:\Libs\glm-0.9.9.5\glm;C:\Libs\glew-2.1.0\include;C:\VulkanSDK\1.1.114.0\Include;C:\Libs\glfw-3.3.bin.WIN64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessToFile>true</PreprocessToFile>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -126,37 +143,6 @@
       <AdditionalDependencies>vulkan-1.lib;glew32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="AbstractState.h" />
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="BufferLayout.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="InputManager.h" />
-    <ClInclude Include="KeyboardHandler.h" />
-    <ClInclude Include="KeyboardListener.h" />
-    <ClInclude Include="MouseButtonHandler.h" />
-    <ClInclude Include="MouseListener.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="Renderer2D.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="SceneGraphNode.h" />
-    <ClInclude Include="StateManager.h" />
-    <ClInclude Include="VertexBuffer.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="AbstractState.cpp" />
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="BufferLayout.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="KeyboardHandler.cpp" />
-    <ClCompile Include="MouseButtonHandler.cpp" />
-    <ClCompile Include="Renderer2D.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SceneGraphNode.cpp" />
-    <ClCompile Include="StateManager.cpp" />
-    <ClCompile Include="VertexBuffer.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

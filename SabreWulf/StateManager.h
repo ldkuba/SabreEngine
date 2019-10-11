@@ -1,24 +1,27 @@
 #pragma once
-#include "Application.h"
+
+#include <vector>
+#include <memory>
+#include <iostream>
+
 #include "AbstractState.h"
 
 class StateManager {
-private:
-	Application* app;
-	std::vector<AbstractState*> registeredStates;
-	AbstractState* activeState;
 public:
-private:
-	bool isRegistered(AbstractState* state);
-public:
-	StateManager(Application* app);
+	StateManager();
 	~StateManager();
 
-	void addState(AbstractState* state);
+	void registerState(AbstractState* state);
 	
+	void setActiveState(int stateId);
+
+	void initState();
 	void updateState();
 	void renderState();
 
-	inline std::vector<AbstractState*> getStates() const { return this->registeredStates; };
-	void setCurrentState(AbstractState* state);
+private:
+	bool checkState();
+
+	std::vector<std::unique_ptr<AbstractState>> m_States;
+	AbstractState* m_ActiveState;
 };

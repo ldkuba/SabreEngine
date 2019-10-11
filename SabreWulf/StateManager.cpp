@@ -1,65 +1,60 @@
 #include "StateManager.h"
-#include <algorithm>
 
-StateManager::StateManager(Application* app)
-	: app{ app }
+StateManager::StateManager() {}
+
+StateManager::~StateManager() 
 {
-
-}
-
-StateManager::~StateManager()
-{
-	for (AbstractState* state : registeredStates)
-	{
-		delete state;
+	for (int i = 0; i < m_States.size(); i++) {
+		m_States[i]->cleanup();
 	}
 }
 
-bool StateManager::isRegistered(AbstractState* state)
+void StateManager::registerState(AbstractState* state)
 {
-	return (std::find(registeredStates.begin(), registeredStates.end(), state) != registeredStates.end());	
+	std::unique_ptr<AbstractState> statePtr(state);
+	m_States.push_back(std::move(statePtr));
 }
 
-void StateManager::addState(AbstractState* state)
+void StateManager::setActiveState(int stateId)
 {
-	if (!isRegistered(state))
-	{
-		registeredStates.push_back(state);
+	for (int i = 0; i < m_States.size(); i++) {
+		if (m_States[i]->id == stateId) {
+			m_ActiveState = m_States[i].get();
+			initState();
+		}
 	}
+}
+
+bool StateManager::checkState()
+{
+	if (m_ActiveState == nullptr) {
+		std::cout << "No active state!" << std::endl;
+		return false;
+	}
+
+	return true;
+}
+
+void StateManager::initState()
+{
+	if (!checkState()) 
+		return;
+
+	m_ActiveState->init();
 }
 
 void StateManager::updateState()
 {
-	activeState->update();
+	if (!checkState())
+		return;
+
+	m_ActiveState->update();
 }
 
 void StateManager::renderState()
 {
-	activeState->render();
-}
+	if (!checkState())
+		return;
 
-void StateManager::setCurrentState(AbstractState* state)
-{
-	if (isRegistered(state))
-	{
-		if (activeState != nullptr)
-		{
-			if (!app->isHeadless())
-			{
-				app->getInputManager()->removeKeyboardListener(activeState);
-				app->getInputManager()->removeMouseListener(activeState);
-			}
-
-			activeState->deactivate();
-		}
-
-		state->initInternal();
-		activeState = state;
-
-		if (!app->isHeadless())
-		{
-			app->getInputManager()->addKeyboardListener(activeState);
-			app->getInputManager()->addMouseListener(activeState);
-		}
-	}
+	m_ActiveState->render();
 }
