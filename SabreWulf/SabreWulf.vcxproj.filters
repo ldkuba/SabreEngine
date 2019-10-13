@@ -21,6 +21,18 @@
     <Filter Include="Source Files\state">
       <UniqueIdentifier>{ecf4552e-e49b-4096-a976-e73dddfbc550}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\graphics">
+      <UniqueIdentifier>{99ffafb7-0205-4ea0-a954-2a3b7bc5652f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\graphics">
+      <UniqueIdentifier>{2b3cfe98-b122-48fa-b57a-3169c6f03ddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\graphics\renderer">
+      <UniqueIdentifier>{9f85012d-4a4e-4f3d-8ea0-58a455825079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\graphics\renderer">
+      <UniqueIdentifier>{b8009fe2-895f-4336-b1e3-c239e6131706}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -35,6 +47,15 @@
     <ClCompile Include="AbstractState.cpp">
       <Filter>Source Files\state</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files\graphics\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="BufferLayout.cpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -45,6 +66,18 @@
     </ClInclude>
     <ClInclude Include="AbstractState.h">
       <Filter>Header Files\state</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Header Files\graphics\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer2D.h">
+      <Filter>Header Files\graphics\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="BufferLayout.h">
+      <Filter>Header Files\graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

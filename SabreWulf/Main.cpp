@@ -2,8 +2,8 @@
 #include "Application.h"
 
 // settings
-const unsigned int SCREEN_WIDTH = 800;
-const unsigned int SCREEN_HEIGHT = 600;
+const unsigned int SCREEN_WIDTH = 1280;
+const unsigned int SCREEN_HEIGHT = 960;
 
 class TestState : public AbstractState {
 public:

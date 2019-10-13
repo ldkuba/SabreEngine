@@ -21,13 +21,20 @@
   <ItemGroup>
     <ClCompile Include="AbstractState.cpp" />
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="BufferLayout.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractState.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="BufferLayout.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Renderer2D.h" />
     <ClInclude Include="StateManager.h" />
+    <ClInclude Include="VertexBuffer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
