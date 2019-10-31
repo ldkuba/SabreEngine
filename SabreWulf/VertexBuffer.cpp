@@ -10,7 +10,7 @@ VertexBuffer::~VertexBuffer()
 	glDeleteBuffers(1, &m_ID);
 }
 
-void VertexBuffer::updateData(BufferLayout layout, void* data, int count, VertexBufferUsage usage, bool alloc)
+void VertexBuffer::updateData(BufferLayout layout, void* data, int count, BufferUsage usage, bool alloc)
 {
 	m_Count = count;
 	m_Layout = layout;
@@ -18,7 +18,7 @@ void VertexBuffer::updateData(BufferLayout layout, void* data, int count, Vertex
 
 	bind();
 
-	if (usage == VertexBufferUsage::STATIC) {
+	if (usage == BufferUsage::STATIC) {
 		glBufferData(GL_ARRAY_BUFFER, count*layout.getTotalSize(), data, GL_STATIC_DRAW);
 	}else
 	{
@@ -30,11 +30,21 @@ void VertexBuffer::updateData(BufferLayout layout, void* data, int count, Vertex
 	}
 
 	//May be incorrect due to padding
-	int offset;
+	int* offset = 0;
 	for (int i = 0; i < layout.count; i++) {
 		glEnableVertexAttribArray(i);
 		glVertexAttribPointer(i, layout.layout[i].count, layout.layout[i].type, false, layout.getTotalSize(), (void*)offset);
 
 		offset += layout.layout[i].getSize();
 	}
+}
+
+void VertexBuffer::bind()
+{
+	glBindBuffer(GL_ARRAY_BUFFER, m_ID);
+}
+
+void VertexBuffer::unbind()
+{
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

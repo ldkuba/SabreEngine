@@ -5,6 +5,11 @@
 
 #include <vector>
 
+enum BufferUsage {
+	STATIC,
+	DYNAMIC
+};
+
 struct BufferLayoutElement {
 	// all types that i will use are 4 bytes numbers. So a single float will be 1 * 4. Vec3 will be 3 * 4.
 	unsigned int type;

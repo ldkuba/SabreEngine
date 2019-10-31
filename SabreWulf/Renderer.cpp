@@ -9,4 +9,5 @@ Renderer::~Renderer() {
 }
 
 void Renderer::renderAll() {
+
 }

@@ -7,17 +7,12 @@
 
 #include "BufferLayout.h"
 
-enum VertexBufferUsage{
-	STATIC,
-	DYNAMIC
-};
-
 class VertexBuffer {
 public:
 	VertexBuffer();
 	~VertexBuffer();
 
-	void updateData(BufferLayout layout, void* data, int count, VertexBufferUsage usage, bool alloc);
+	void updateData(BufferLayout layout, void* data, int count, BufferUsage usage, bool alloc);
 
 	void bind();
 	void unbind();
@@ -25,6 +20,6 @@ public:
 private:
 	GLuint m_ID;
 	BufferLayout m_Layout;
-	VertexBufferUsage m_Usage;
+	BufferUsage m_Usage;
 	int m_Count;
 };
