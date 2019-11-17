@@ -39,6 +39,9 @@
     <Filter Include="Source Files\graphics\shader">
       <UniqueIdentifier>{3f2d942b-8464-4ccc-b9d0-476163d802d7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\graphics\camera">
+      <UniqueIdentifier>{c5142f77-4985-4c58-b0cf-19ac19f0e130}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -77,6 +80,9 @@
     <ClCompile Include="ShaderProgram.cpp">
       <Filter>Source Files\graphics\shader</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -111,6 +117,9 @@
     </ClInclude>
     <ClInclude Include="UniformLayout.h">
       <Filter>Header Files\graphics\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\graphics\camera</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

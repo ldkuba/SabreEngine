@@ -4,6 +4,7 @@
 #include "IndexBuffer.h"
 #include "VertexArray.h"
 #include "ShaderProgram.h"
+#include "Camera.h"
 
 class Renderer2D {
 public:
@@ -20,6 +21,6 @@ private:
 	VertexArray m_VertexArray;
 	ShaderProgram m_ShaderProgram;
 	
-	//Camera m_Camera;
+	Camera m_Camera;
 
 };
