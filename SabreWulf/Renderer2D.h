@@ -3,6 +3,7 @@
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
 #include "VertexArray.h"
+#include "ShaderProgram.h"
 
 class Renderer2D {
 public:
@@ -17,7 +18,7 @@ private:
 	VertexBuffer m_VertexBuffer;
 	IndexBuffer m_IndexBuffer;
 	VertexArray m_VertexArray;
-	//ShaderProgram m_ShaderProgram;
+	ShaderProgram m_ShaderProgram;
 	
 	//Camera m_Camera;
 

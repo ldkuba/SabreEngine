@@ -26,7 +26,9 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Renderer2D.cpp" />
+    <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="UniformLayout.cpp" />
     <ClCompile Include="VertexArray.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
   </ItemGroup>
@@ -37,7 +39,9 @@
     <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Renderer2D.h" />
+    <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="StateManager.h" />
+    <ClInclude Include="UniformLayout.h" />
     <ClInclude Include="VertexArray.h" />
     <ClInclude Include="VertexBuffer.h" />
   </ItemGroup>

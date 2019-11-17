@@ -33,6 +33,12 @@
     <Filter Include="Source Files\graphics\renderer">
       <UniqueIdentifier>{b8009fe2-895f-4336-b1e3-c239e6131706}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\graphics\shader">
+      <UniqueIdentifier>{2e284d37-7ed7-4b96-8afb-91fc2e28f508}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\graphics\shader">
+      <UniqueIdentifier>{3f2d942b-8464-4ccc-b9d0-476163d802d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -65,6 +71,12 @@
     <ClCompile Include="VertexArray.cpp">
       <Filter>Source Files\graphics</Filter>
     </ClCompile>
+    <ClCompile Include="UniformLayout.cpp">
+      <Filter>Source Files\graphics\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram.cpp">
+      <Filter>Source Files\graphics\shader</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -93,6 +105,12 @@
     </ClInclude>
     <ClInclude Include="VertexArray.h">
       <Filter>Header Files\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram.h">
+      <Filter>Header Files\graphics\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="UniformLayout.h">
+      <Filter>Header Files\graphics\shader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
